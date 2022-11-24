@@ -1,0 +1,18 @@
+{
+  "name": "bedjs3",
+  "version": "3.0.0",
+  "description": "BedJS 3 is a javascript framework for easier use of canvas 2d. ",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Dimidroll06/BedJs3.git"
+  },
+  "keywords": [
+    "framework"
+  ],
+  "author": "Dimidroll06 <dima.shved.06@mail.ru>",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Dimidroll06/BedJs3/issues"
+  },
+  "homepage": "https://github.com/Dimidroll06/BedJs3#readme"
+}
