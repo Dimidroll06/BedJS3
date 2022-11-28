@@ -3,8 +3,8 @@ export class Vector2 {
      * Creates an instance of Vector2.
      * @author Dimidroll
      * @date 28/11/2022
-     * @param {number} [x=0]
-     * @param {number} [y=0]
+     * @param {number} x
+     * @param {number} y
      * @memberof Vector2
      */
     constructor(x = 0, y = 0) {
