@@ -105,7 +105,7 @@ export class Vector2 {
         this.y = y;
         return this;
     }
-    
+
     /**
      * @author Dimidroll
      * @date 28/11/2022
@@ -355,7 +355,7 @@ export class Vector2 {
         this.y = Math.floor(this.y);
         return this;
     }
-    
+
     /**
      * @author Dimidroll
      * @date 28/11/2022
@@ -367,7 +367,7 @@ export class Vector2 {
         this.y = Math.ceil(this.y);
         return this;
     }
-    
+
     /**
      * @author Dimidroll
      * @date 28/11/2022
@@ -379,7 +379,7 @@ export class Vector2 {
         this.y = Math.round(this.y);
         return this;
     }
-    
+
     /**
      * @author Dimidroll
      * @date 28/11/2022
@@ -391,7 +391,7 @@ export class Vector2 {
         this.y = this.y < 0 ? Math.ceil(this.y) : Math.floor(this.y);
         return this;
     }
-    
+
     /**
      * @author Dimidroll
      * @date 28/11/2022
@@ -593,7 +593,7 @@ export class Vector2 {
         array[offset + 1] = this.y;
         return array;
     }
-    
+
     /**
      * @author Dimidroll
      * @date 28/11/2022
@@ -623,7 +623,7 @@ export class Vector2 {
         this.y = Math.random();
         return this;
     }
-    
+
     *[Symbol.iterator]() {
         yield this.x;
         yield this.y;
