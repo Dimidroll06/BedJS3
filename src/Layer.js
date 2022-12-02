@@ -1,7 +1,7 @@
-import { Sprite } from "./Sprite.js";
+import Sprite from "./Sprite.js";
 import { BedJS } from "./bed.js";
 
-export class Layer {
+export default class Layer {
 
     /** @type {HTMLCanvasElement} */
     _canvas;

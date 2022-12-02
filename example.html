@@ -5,17 +5,26 @@
     <title>Example BedJS 3.0</title>
     <script type="module" defer>
         import * as BED from './src/bed.js'
+        import Vector2 from './src/Vector2.js'
 
         var cnv = document.body.querySelector('#cnv'),
             BedJS = new BED.BedJS(cnv),
             layer0 = BedJS.getLayer('layer0');
 
-        var sprite1 = layer0.addSprite(new BED.Sprite());
-        var sprite2 = layer0.addSprite(new BED.Sprite());
-        BedJS.draw();
+        var sprite1 = layer0.addSprite(new BED.Sprite({ position: new Vector2(50, 50), CenterOfSprite: new Vector2(25, 25) }));
+        var sprite2 = layer0.addSprite(new BED.Sprite({ position: new Vector2(100, 100), CenterOfSprite: new Vector2(25, 25) }));
+        
+        function draw(){
+            sprite1.angle+=1;
+            sprite2.angle-=1;
+            BedJS.draw();
+            requestAnimationFrame(draw);
+        }
+
+        draw()
     </script>
 </head>
 <body>
-    <canvas id="cnv"></canvas>
+    <canvas id="cnv" width="800" height="600" style="border: 1px black solid;"></canvas>
 </body>
 </html>

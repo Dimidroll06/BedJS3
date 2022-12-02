@@ -1,4 +1,4 @@
-export class Vector2 {
+export default class Vector2 {
     /**
      * Creates an instance of Vector2.
      * @author Dimidroll

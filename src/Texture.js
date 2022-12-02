@@ -1,4 +1,4 @@
-export class Texture{
+export default class Texture{
     constructor(params={}){
 
     }

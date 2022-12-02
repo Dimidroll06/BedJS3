@@ -1,6 +1,6 @@
-import { Layer } from "./Layer.js";
-import { Sprite } from "./Sprite.js";
-import { Vector2 } from "./Vector2.js";
+import Layer from "./Layer.js";
+import Sprite from "./Sprite.js";
+import Vector2 from "./Vector2.js";
 
 class BedJS {
 
@@ -32,7 +32,15 @@ class BedJS {
     }
 
 
+    /**
+     * Main draw cicle
+     * (Make sure you have any layers and sprites on them)
+     * @author Dimidroll
+     * @date 02/12/2022
+     * @memberof BedJS
+     */
     draw() {
+        this.ctx.clearRect(0, 0, this.size.x, this.size.y)
         for (const layerName in this.layers) {
             if (Object.hasOwnProperty.call(this.layers, layerName)) {
                 /** @type {Layer} */
