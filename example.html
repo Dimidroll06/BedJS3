@@ -3,11 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <title>Example BedJS 3.0</title>
-    <script module defer>
+    <script type="module" defer>
         import * as BED from './src/bed.js'
 
         var cnv = document.body.querySelector('#cnv'),
-            BedJS = BED.BedJS(cnv);
+            BedJS = new BED.BedJS(cnv),
+            layer0 = BedJS.getLayer('layer0');
+
+        var sprite = layer0.addSprite(new BED.Sprite());
+        BedJS.draw();
     </script>
 </head>
 <body>

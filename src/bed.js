@@ -1,11 +1,18 @@
-import { Layer } from "./Layer";
-import { Vector2 } from "./Vector2";
+import { Layer } from "./Layer.js";
+import { Sprite } from "./Sprite.js";
+import { Vector2 } from "./Vector2.js";
 
 class BedJS {
 
-    
     canvas = document.createElement('canvas');
     ctx = this.canvas.getContext('2d');
+    /**
+     *
+     * @type {{LayerName: Layer}}
+     * @author Dimidroll
+     * @date 02/12/2022
+     * @memberof BedJS
+     */
     layers = { layer0: new Layer(this) }
 
     /**
@@ -25,7 +32,7 @@ class BedJS {
     }
 
 
-    draw(){
+    draw() {
         for (const layerName in this.layers) {
             if (Object.hasOwnProperty.call(this.layers, layerName)) {
                 /** @type {Layer} */
@@ -43,7 +50,39 @@ class BedJS {
 
     get size() { return new Vector2(this.width, this.height) }
     set size(v) { this.width = v.x; this.height = v.y; }
+
+    /**
+     * Return layer
+     * @author Dimidroll
+     * @date 02/12/2022
+     * @param {String} layerName
+     * @returns {Layer} 
+     * @memberof BedJS
+     */
+    getLayer(layerName) {
+        return this.layers[layerName]
+    }
+
+    /**
+     * Creates an instance of Layer.
+     * @author Dimidroll
+     * @date 02/12/2022
+     * @param {String} layerName
+     * @param {Object} layerParams
+     * @returns {Layer} 
+     * @memberof BedJS
+     */
+    addLayer(layerName, layerParams) {
+        if (!layerName) return;
+        if (this.layers[layerName]) return this.layers[layerName];
+
+        this.layers[layerName] = new Layer(this, layerParams);
+        return this.layers[layerName];
+    }
 }
 
 
-export { BedJS }
+export {
+    BedJS,
+    Sprite
+}

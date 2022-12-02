@@ -1,5 +1,5 @@
-import { Sprite } from "./Sprite";
-import { BedJS } from "./bed";
+import { Sprite } from "./Sprite.js";
+import { BedJS } from "./bed.js";
 
 export class Layer {
     /**
@@ -16,6 +16,9 @@ export class Layer {
         this._canvas.width = bed.size.x;
         this._canvas.height = bed.size.y;
         this._ctx = this._canvas.getContext('2d');
+        /**
+         * @type {Array<Sprite>}
+         */
         this._sprites = [];
     }
 
@@ -28,7 +31,7 @@ export class Layer {
      */
     addSprite(sprite) {
         this._sprites.push(sprite);
-        return this;
+        return sprite;
     }
 
     /**
@@ -39,8 +42,8 @@ export class Layer {
      * @memberof Layer
      */
     removeSprite(sprite) {
-        if (this._sprites.includes(sprite)) this._sprites.splice(this._sprites.indexOf(sprite), 1);
-        return this;
+        if (this._sprites.includes(sprite)) return !!this._sprites.splice(this._sprites.indexOf(sprite), 1);
+        return false;
     }
 
     /**
@@ -53,7 +56,13 @@ export class Layer {
         this._canvas.width = this._bed.size.x;
         this._canvas.height = this._bed.size.y;
 
-        ctx.drawImage(this._canvas, 0, 0, this._canvas.width, this._canvas.height)
+        this._sprites.forEach(sprite => {
+            ctx.save();
+            sprite._draw(ctx);
+            ctx.restore();
+        });
+
+        ctx.drawImage(this._canvas, 0, 0, this._canvas.width, this._canvas.height);
     }
 
 }
