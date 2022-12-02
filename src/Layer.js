@@ -2,6 +2,15 @@ import { Sprite } from "./Sprite.js";
 import { BedJS } from "./bed.js";
 
 export class Layer {
+
+    /** @type {HTMLCanvasElement} */
+    _canvas;
+    /** @type {CanvasRenderingContext2D} */
+    _ctx;
+    /** @type {Number} */
+    opacity = 1;
+
+
     /**
      * Creates an instance of Layer.
      * @author Dimidroll
@@ -57,12 +66,15 @@ export class Layer {
         this._canvas.height = this._bed.size.y;
 
         this._sprites.forEach(sprite => {
-            ctx.save();
-            sprite._draw(ctx);
-            ctx.restore();
+            this._ctx.save();
+            sprite._draw(this._ctx);
+            this._ctx.restore();
         });
 
+        ctx.save();
+        ctx.globalAlpha = this.opacity;
         ctx.drawImage(this._canvas, 0, 0, this._canvas.width, this._canvas.height);
+        ctx.restore();
     }
 
 }
