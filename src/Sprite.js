@@ -6,20 +6,20 @@ export default class Sprite {
     position = new Vector2(0, 0);
     angle = 0;
     opacity = 1;
-    CenterOfSprite = new Vector2(0, 0);
+    Origin = new Vector2(0, 0);
 
     /**
      * Creates an instance of Sprite.
      * @author Dimidroll
      * @date 02/12/2022
-     * @param {{position?: Vector2, opacity?: Number, angle?: Number, CenterOfSprite: Vector2}} params
+     * @param {{position?: Vector2, opacity?: Number, angle?: Number, Origin: Vector2}} params
      * @param {Texture} texture
      * @memberof Sprite
      */
     constructor(params={}, texture) {
         this.position = params.position ?? this.position;
         this.opacity = params.opacity ?? this.opacity;
-        this.CenterOfSprite = params.CenterOfSprite ?? this.CenterOfSprite;
+        this.Origin = params.Origin ?? this.Origin;
         this.angle = params.angle ?? this.angle;
     }
     /**
@@ -41,7 +41,7 @@ export default class Sprite {
         ctx.fillStyle = 'green';
 
         // texture
-        ctx.fillRect(this.position.x - this.CenterOfSprite.x, this.position.y - this.CenterOfSprite.y, 50, 50);
+        ctx.fillRect(this.position.x - this.Origin.x, this.position.y - this.Origin.y, 50, 50);
 
     }
 }

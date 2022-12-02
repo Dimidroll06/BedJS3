@@ -11,8 +11,8 @@
             BedJS = new BED.BedJS(cnv),
             layer0 = BedJS.getLayer('layer0');
 
-        var sprite1 = layer0.addSprite(new BED.Sprite({ position: new Vector2(50, 50), CenterOfSprite: new Vector2(25, 25) }));
-        var sprite2 = layer0.addSprite(new BED.Sprite({ position: new Vector2(100, 100), CenterOfSprite: new Vector2(25, 25) }));
+        var sprite1 = layer0.addSprite(new BED.Sprite({ position: new Vector2(50, 50), Origin: new Vector2(25, 25) }));
+        var sprite2 = layer0.addSprite(new BED.Sprite({ position: new Vector2(100, 100), Origin: new Vector2(25, 25) }));
         
         function draw(){
             sprite1.angle+=1;
