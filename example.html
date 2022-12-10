@@ -4,27 +4,47 @@
     <meta charset="UTF-8">
     <title>Example BedJS 3.0</title>
     <script type="module" defer>
-        import * as BED from './src/bed.js'
-        import Vector2 from './src/Vector2.js'
+        import * as BED from './src/bed.js';
+        import Vector2 from './src/Vector2.js';
+        import { RectTexture } from "./src/Texture.js";
 
         var cnv = document.body.querySelector('#cnv'),
             BedJS = new BED.BedJS(cnv),
             layer0 = BedJS.getLayer('layer0');
 
-        var sprite1 = layer0.addSprite(new BED.Sprite({ position: new Vector2(50, 50), Origin: new Vector2(25, 25) }));
-        var sprite2 = layer0.addSprite(new BED.Sprite({ position: new Vector2(100, 100), Origin: new Vector2(25, 25) }));
+        var sprite1 = layer0.addSprite(
+            new BED.Sprite({ 
+                position: new Vector2(50, 50), 
+                Origin: new Vector2(25, 25) 
+            }, 
+            new RectTexture({ size: new Vector2(50, 50), fillStyle: 'red', strokeStyle: 'blue', lineWidth: 10, lineJoin: 'round' })
+        ));
+
+
+        var sprite2 = layer0.addSprite(
+            new BED.Sprite({ 
+                    position: new Vector2(100, 100), 
+                    Origin: new Vector2(25, 25) 
+                },
+                sprite1.texture));
         
         function draw(){
-            sprite1.angle+=1;
             sprite2.angle-=1;
             BedJS.draw();
             requestAnimationFrame(draw);
         }
-
+        
         draw()
+
+        window.moveRight = ()=>{ sprite1.position.x+=10 }
+        window.moveLeft = ()=>{ sprite1.position.x-=10 }
+
     </script>
 </head>
 <body>
+    <button onclick="moveLeft()">l</button>
+    <button onclick="moveRight()">r</button>
+
     <canvas id="cnv" width="800" height="600" style="border: 1px black solid;"></canvas>
 </body>
 </html>

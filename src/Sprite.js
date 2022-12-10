@@ -1,4 +1,4 @@
-import Texture from "./Texture.js";
+import Texture, { RectTexture } from "./Texture.js";
 import Vector2 from "./Vector2.js";
 
 export default class Sprite {
@@ -6,7 +6,7 @@ export default class Sprite {
     position = new Vector2(0, 0);
     angle = 0;
     opacity = 1;
-    Origin = new Vector2(0, 0);
+    origin = new Vector2(0, 0);
 
     /**
      * Creates an instance of Sprite.
@@ -19,8 +19,10 @@ export default class Sprite {
     constructor(params={}, texture) {
         this.position = params.position ?? this.position;
         this.opacity = params.opacity ?? this.opacity;
-        this.Origin = params.Origin ?? this.Origin;
+        this.origin = params.Origin ?? this.origin;
         this.angle = params.angle ?? this.angle;
+
+        this.texture = texture ?? new RectTexture();
     }
     /**
      * draw func
@@ -32,16 +34,8 @@ export default class Sprite {
     _draw(ctx) {
         // opacity
         ctx.globalAlpha = this.opacity;
-
-        // angle
-        ctx.translate(this.position.x, this.position.y);
-        ctx.rotate(this.angle * ( Math.PI/180 ));
-        ctx.translate(-(this.position.x), -(this.position.y));
-
-        ctx.fillStyle = 'green';
-
         // texture
-        ctx.fillRect(this.position.x - this.Origin.x, this.position.y - this.Origin.y, 50, 50);
+        this.texture.draw(ctx, { position: this.position, angle: this.angle, origin: this.origin });
 
     }
 }
