@@ -629,3 +629,5 @@ export default class Vector2 {
         yield this.y;
     }
 }
+
+Vector2.prototype.type = 'Vector2';
