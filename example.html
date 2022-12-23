@@ -20,16 +20,18 @@
                     position: new Vector2(10, 10)
                 },
                 new ImageTexture('logo.png', { 
-                    size: new Vector2(100, 100)
+                    size: new Vector2(128, 128),
+                    pixelart: true
                 })
             )
         );
         var animatedSprite = layer0.addSprite(
                     new BED.Sprite({
-                            position: new Vector2(128, 0)
+                            position: new Vector2(128, -35*3)
                         },
                         new ImageTexture('Knight.png', { 
-                            size: new Vector2(120, 80)
+                            size: new Vector2(120*3, 80*3),
+                            pixelart: true
                         })
                     )
                 );
@@ -54,7 +56,7 @@
                 cropSize: new Vector2(120, 80),
                 cropOffset: new Vector2(120*3, 0)
             }
-        ], 12, true)
+        ], 10, true)
         // animatedSprite.applyBehaviour(new Behaviour());
 
         // window.sprite1 = sprite1

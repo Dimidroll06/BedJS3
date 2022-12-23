@@ -70,6 +70,8 @@ export class ImageTexture extends Texture{
     offset = new Vector2(0, 0);
     /** @type { Vector2 } */
     crop = new Vector2(0, 0);
+    /** @type {Boolean} */
+    pixelart = false;
 
     /**
      * Creates an instance of ImageTexture.
@@ -86,6 +88,7 @@ export class ImageTexture extends Texture{
         this.size = params.size ?? this.size;
         this.crop = params.crop ?? this.crop;
         this.offset = params.offset ?? this.offset;
+        this.pixelart = params.pixelart ?? this.pixelart;
     }
 
     /**
@@ -128,6 +131,7 @@ export class ImageTexture extends Texture{
         if(typeof this.src === 'undefinded') throw new Error('src is undefinded');
         if(!this.#img.complete) return 
 
+        if(this.pixelart) ctx.imageSmoothingEnabled = false;
         // angle
         ctx.translate(position.x, position.y);
         ctx.rotate(angle * ( Math.PI/180 ));

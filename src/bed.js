@@ -20,14 +20,13 @@ class BedJS {
      * @author Dimidroll
      * @date 24/11/2022
      * @param {HTMLCanvasElement} canvas
-     * @param {Number} width
-     * @param {Number} height
+     * @param {{width?: Number, height?: Number}} params
      * @memberof BedJS
      */
-    constructor(canvas, width = canvas.width, height = canvas.height) {
+    constructor(canvas, params={ width: canvas.width, height: canvas.height }) {
         this.canvas = canvas ?? this.canvas;
-        this.canvas.width = width;
-        this.canvas.height = height;
+        this.canvas.width = params.width ?? canvas.width;
+        this.canvas.height = params.height ?? canvas.height;
         this.ctx = this.canvas.getContext('2d');
     }
 
