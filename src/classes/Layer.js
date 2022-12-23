@@ -1,5 +1,5 @@
 import Sprite from "./Sprite.js";
-import { BedJS } from "./bed.js";
+import { BedJS } from "../bed.js";
 
 export default class Layer {
 

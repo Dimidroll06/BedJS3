@@ -6,7 +6,8 @@
     <script type="module" defer>
         import * as BED from './src/bed.js';
         import Vector2 from './src/Vector2.js';
-        import { ImageTexture } from "./src/Texture.js";
+        import { ImageTexture } from "./src/classes/Texture.js";
+        import Animation from "./src/behaviours/Animation.js"
 
         window.isDebug = true;
 
@@ -14,17 +15,49 @@
             BedJS = new BED.BedJS(cnv),
             layer0 = BedJS.getLayer('layer0');
 
-        var sprite1 = layer0.addSprite(
+        var logo = layer0.addSprite(
             new BED.Sprite({
-                position: new Vector2(10, 10)
-            },
+                    position: new Vector2(10, 10)
+                },
                 new ImageTexture('logo.png', { 
                     size: new Vector2(100, 100)
                 })
-            ));
+            )
+        );
+        var animatedSprite = layer0.addSprite(
+                    new BED.Sprite({
+                            position: new Vector2(128, 0)
+                        },
+                        new ImageTexture('Knight.png', { 
+                            size: new Vector2(120, 80)
+                        })
+                    )
+                );
         
+        
+        animatedSprite.animator = animatedSprite.applyBehaviour(new Animation());
+        animatedSprite.animator.addAnimation('default', 
+        [
+            {
+                cropSize: new Vector2(120, 80),
+                cropOffset: new Vector2(120*0, 0)
+            },
+            {
+                cropSize: new Vector2(120, 80),
+                cropOffset: new Vector2(120*1, 0)
+            },
+            {
+                cropSize: new Vector2(120, 80),
+                cropOffset: new Vector2(120*2, 0)
+            },
+            {
+                cropSize: new Vector2(120, 80),
+                cropOffset: new Vector2(120*3, 0)
+            }
+        ], 12, true)
+        // animatedSprite.applyBehaviour(new Behaviour());
 
-        window.sprite1 = sprite1
+        // window.sprite1 = sprite1
         function draw(){
             BedJS.draw();
             requestAnimationFrame(draw);

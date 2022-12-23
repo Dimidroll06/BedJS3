@@ -1,5 +1,5 @@
-import Layer from "./Layer.js";
-import Sprite from "./Sprite.js";
+import Layer from "./classes/Layer.js";
+import Sprite from "./classes/Sprite.js";
 import Vector2 from "./Vector2.js";
 
 class BedJS {
